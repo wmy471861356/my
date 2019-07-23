@@ -1,0 +1,13 @@
+..\..\output\timer.o: ..\..\User\TIMER\timer.c
+..\..\output\timer.o: ..\..\User\TIMER\timer.h
+..\..\output\timer.o: ..\..\User\sys\sys.h
+..\..\output\timer.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\timer.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\timer.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\timer.o: ..\..\User\stm32f10x_conf.h
+..\..\output\timer.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\timer.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\timer.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\timer.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\timer.o: ..\..\User\LED\led.h

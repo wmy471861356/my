@@ -1,0 +1,14 @@
+..\..\output\lsens.o: ..\..\User\LSENS\lsens.c
+..\..\output\lsens.o: ..\..\User\LSENS\lsens.h
+..\..\output\lsens.o: ..\..\User\sys\sys.h
+..\..\output\lsens.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\lsens.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\lsens.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\lsens.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\lsens.o: ..\..\User\stm32f10x_conf.h
+..\..\output\lsens.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\lsens.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\lsens.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\lsens.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\lsens.o: ..\..\User\delay\delay.h
+..\..\output\lsens.o: ..\..\Libraries\FWlib\inc\stm32f10x_adc.h

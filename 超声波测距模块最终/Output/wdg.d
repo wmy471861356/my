@@ -1,0 +1,13 @@
+..\..\output\wdg.o: ..\..\User\WDG\wdg.c
+..\..\output\wdg.o: ..\..\User\WDG\wdg.h
+..\..\output\wdg.o: ..\..\User\sys\sys.h
+..\..\output\wdg.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\wdg.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\wdg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\wdg.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\wdg.o: ..\..\User\stm32f10x_conf.h
+..\..\output\wdg.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\wdg.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\wdg.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\wdg.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\wdg.o: ..\..\User\LED\led.h

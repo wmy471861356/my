@@ -1,0 +1,17 @@
+..\..\output\exti.o: ..\..\User\EXTI\exti.c
+..\..\output\exti.o: ..\..\User\EXTI\exti.h
+..\..\output\exti.o: ..\..\User\sys\sys.h
+..\..\output\exti.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\exti.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\exti.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\..\output\exti.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\exti.o: ..\..\User\stm32f10x_conf.h
+..\..\output\exti.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\exti.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\exti.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\exti.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\exti.o: ..\..\User\LED\led.h
+..\..\output\exti.o: ..\..\User\KEY\key.h
+..\..\output\exti.o: ..\..\User\delay\delay.h
+..\..\output\exti.o: ..\..\User\usart\usart.h
+..\..\output\exti.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\stm32学习\stm32程序(自制)\超声波测距模块\Project\RVMDK（uv4）\iSO-STM32.uvproj
+Project File Date:  06/04/2016
+
+<h2>Output:</h2>
+Build target 'USART1（polling）'
+compiling main.c...
+..\..\User\length\bsp_length.h(8): warning:  #1295-D: Deprecated declaration Distance_Config - give arg types
+..\..\User\tick\bsp_tick.h(9): warning:  #1295-D: Deprecated declaration Tim3_Config - give arg types
+..\..\User\tick\bsp_tick.h(10): warning:  #1295-D: Deprecated declaration NVIC_Configuration - give arg types
+..\..\User\main.c(39): warning:  #177-D: variable "distancebuf" was declared but never referenced
+linking...
+Program Size: Code=11756 RO-data=336 RW-data=44 ZI-data=1028  
+FromELF: creating hex file...
+"..\..\Output\Template.axf" - 0 Errors, 4 Warning(s).

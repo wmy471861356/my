@@ -1,0 +1,158 @@
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  fire
+  * @version V1.0
+  * @date    2013-xx-xx
+  * @brief   USART printf example
+  ******************************************************************************
+  * @attention
+  *
+  * 实验平台:野火 iSO STM32 开发板 
+  * 论坛    :http://www.chuxue123.com
+  * 淘宝    :http://firestm32.taobao.com
+  *
+  ******************************************************************************
+  */
+
+#include "stm32f10x.h"
+#include "bsp_usart1.h"
+#include "bsp_length.h"
+#include "bsp_tick.h"
+#include "led.h"
+#include "string.h"
+#include "sys.h"
+#include "usart.h"
+#include <stdlib.h>
+//注意这里的超声波模块的VCC必须是+5V，如果是+3V的话会导致测距不准
+#define CLI()      __set_PRIMASK(1)		/* 关闭总中断 */  
+#define SEI() __set_PRIMASK(0)		/*开总中断*/
+
+void Delay(unsigned short int time);  //粗略的延时函数
+float ChangeDistance(unsigned int cout1);  //时间转为距离函数
+void clear_buff(void);
+void ack(char *pc);
+//ECHO PA4
+//TRIG PA5
+ /**
+  * @brief  主函数
+  * @param  无
+  * @retval 无
+  */
+int main(void)
+{  
+	 int a=0;
+   u16 t;
+	 u8 len;	
+	 u16 times=0; 
+
+
+    u8 *p1; 
+
+	  unsigned int count=0;
+	  float distance=0;
+	  float v=0;
+	  float d1,d2;
+	  float distancebuf[]={0};
+		    	 //延时函数初始化	
+	 NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);// 设置中断优先级分组2
+		/* USART1 config 115200 8-N-1 */
+		LED_Init();
+		USART1_Config();
+    Distance_Config();  //测距模块对应的引脚初始化
+    CLI() ;//关闭总中断
+	  SEI(); //开总中断
+	  Tim3_Config();  //定时器的初始化
+	  LED0=1;
+	  LED1=1;
+	  GPIO_ResetBits(GPIOA,GPIO_Pin_5);  //先拉低电平
+	  
+		p1=(u8*)strstr((const char*)(USART_RX_BUF),"open");
+		
+		if(p1){	
+		LED1=0;
+	  while(1)
+		{ 
+			clear_buff();
+      printf("测距开始\n");
+			  GPIO_SetBits(GPIOA,GPIO_Pin_5);  //拉高电平
+			  Delay(20);  //延时20个微秒
+			//  Delay(20);
+			//  Delay(20);
+			 GPIO_ResetBits(GPIOA,GPIO_Pin_5); 
+
+       TIM3->CNT=0;  //TIM3的计数器清0
+
+       while(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4) == 0); //等待ECHO的高电平
+		
+       
+       TIM_Cmd(TIM3,ENABLE);  //运行TIM3进行计时
+       
+			while((GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4) == 1) && (TIM3->CNT < TIM3->ARR-10));
+			 
+			  TIM_Cmd(TIM3,DISABLE);  
+       		
+        count=TIM3->CNT;
+        
+			  d1=distance;
+			  
+        printf("count=%d",count);			
+			  distance=ChangeDistance(count);
+				d2=distance;
+				v=(d2-d1)/2000;
+				if(d2<150){
+				   LED0=0;
+					 
+				}else
+				{LED0=1;}
+				printf(" 当前的速度为：%f m/s\n",v);
+			  printf(" 当前距离为：%f m\n",distance/1000);
+			  Delay(50000); 
+				Delay(50000);
+        
+	     			
+     }
+}
+}
+		
+
+void Delay(unsigned short int time)  //粗略的延时函数
+{
+    unsigned char i=0;
+	  while(time--)
+		{
+        i=100;
+			  while(i--);
+    }
+}
+
+float ChangeDistance(unsigned int cout1)
+{
+    float distance=0;
+	  printf("cou1=%d\n",cout1);
+	  distance=cout1/58.0;
+	
+	  return distance;
+}
+void clear_buff(void)
+{
+	u16 i;
+	
+	for(i=0;i<USART_RX_STA;i++)
+	{
+	USART_RX_BUF[i]=0;
+	}
+	USART_RX_STA=0;
+}
+void ack(char *pc)
+	{
+u16 t;
+		for(t=0;t<(strlen(pc));t++)
+		{
+			while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+			USART_SendData(USART1,pc[t]);
+		}
+		USART_RX_STA=0;
+}
+
+/*********************************************END OF FILE**********************/
